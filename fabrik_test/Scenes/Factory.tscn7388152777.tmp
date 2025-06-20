@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://cpke6nlvp7ca1"]
+
+[ext_resource type="PackedScene" uid="uid://tqbu0bfgmtpu" path="res://Scenes/Building.tscn" id="1_j7huh"]
+[ext_resource type="PackedScene" uid="uid://bx80quqblm3w5" path="res://Scenes/Truck.tscn" id="1_xfy5e"]
+[ext_resource type="PackedScene" uid="uid://5ho87ahonvce" path="res://Scenes/Steel.tscn" id="2_ix8fr"]
+[ext_resource type="Script" uid="uid://011431bpu10g" path="res://Scenes/animation_player.gd" id="3_a5v3u"]
+[ext_resource type="PackedScene" uid="uid://bm88ayxkmfxqv" path="res://Scenes/Floor.tscn" id="4_wu7b3"]
+
+[sub_resource type="Animation" id="Animation_ix8fr"]
+resource_name = "move"
+length = 8.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.01, 4.33333, 4.93333, 5.99, 7, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-7, 0.965, 17), Vector3(3.747, 0.965, 17), Vector3(3.747, 0.965, 17), Vector3(3.74682, 0.964702, -10.6017), Vector3(3.74682, 0.964702, -12.6447), Vector3(-7, 0.965, -12.645), Vector3(-7, 0.965, -12.645), Vector3(-7, 0.965, 17)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.01, 1.2, 4.33333, 4.93333, 5.96667, 6.4, 8.23333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j7huh"]
+resource_name = "theTrip"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1, 1.57, 2.99, 3.59, 4.47, 4.98, 5.88, 7.43333, 7.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-7.37502, 0.964702, 17.4864), Vector3(1.2305, 0.964702, 17.4864), Vector3(3.986, 0.965, 17.486), Vector3(3.986, 0.965, 17.486), Vector3(3.986, 0.965, -5.39804), Vector3(3.986, 0.965, -13.3465), Vector3(-4.51947, 0.965, -13.3465), Vector3(-7.375, 0.965, -13.347), Vector3(-7.375, 0.965, -13.347), Vector3(-7.375, 0.965, 10.4486), Vector3(-7.37502, 0.964702, 17.4864)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 1, 1.57, 2.99, 3.59, 4.47, 4.98, 5.88, 7.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wu7b3"]
+_data = {
+&"move": SubResource("Animation_ix8fr"),
+&"theTrip": SubResource("Animation_j7huh")
+}
+
+[node name="Factory" type="Node3D"]
+
+[node name="Warehouse" parent="." instance=ExtResource("1_j7huh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2.75, 17.5)
+
+[node name="Truck" parent="." instance=ExtResource("1_xfy5e")]
+transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, -7.37502, 0.964702, 17.4864)
+script = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Truck"]
+libraries = {
+&"": SubResource("AnimationLibrary_wu7b3")
+}
+script = ExtResource("3_a5v3u")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Truck"]
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, -1.14441e-05, 5, 0.0325394)
+
+[node name="Steel" parent="." instance=ExtResource("2_ix8fr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.89308, 9.15327, 18.5142)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.651496, 0.542247, -0.530586, -0.0674076, 0.737988, 0.671439, 0.755652, -0.401674, 0.517348, -11.249, 8.40093, 19.1972)
+fov = 88.5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.68672, -0.13282, 0.714685, -0.56503, -0.716081, 0.409841, 0.457337, -0.685264, -0.566794, 12.8437, 6.79463, -18.4344)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.818639, 0.424667, -0.386636, -0.56503, -0.716081, 0.409841, -0.102817, 0.553973, 0.826162, -5.02272, 4.24713, 19.0081)
+
+[node name="Factory" parent="." instance=ExtResource("1_j7huh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2.75, -17.5)
+
+[node name="Floor" parent="." instance=ExtResource("4_wu7b3")]

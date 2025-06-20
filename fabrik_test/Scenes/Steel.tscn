@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://5ho87ahonvce"]
+
+[ext_resource type="Script" uid="uid://4mc2lwu0kf7o" path="res://Scripts/startTruck/inWarehouse.gd" id="1_jjchj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qiwww"]
+size = Vector3(0.500488, 0.497467, 0.501099)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qiwww"]
+vertex_color_is_srgb = true
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_qiwww"]
+material = SubResource("StandardMaterial3D_qiwww")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Steel" type="Node3D"]
+script = ExtResource("1_jjchj")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000732422, 0.000106812, 0.000152588)
+shape = SubResource("BoxShape3D_qiwww")
+
+[node name="Steel_input" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_qiwww")
+skeleton = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000732422, 0.000106812, 0.000152588)
+shape = SubResource("BoxShape3D_qiwww")
+
+[connection signal="area_entered" from="RigidBody3D/Area3D" to="." method="_on_area_3d_area_entered"]
