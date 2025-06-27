@@ -1,0 +1,257 @@
+[gd_scene load_steps=16 format=3 uid="uid://d2if8l33pdmbu"]
+
+[ext_resource type="Script" uid="uid://cp203u0yyms0u" path="res://Scripts/Menu/play_speed.gd" id="1_3kf3n"]
+[ext_resource type="Script" uid="uid://cjiaksx363l62" path="res://Scripts/Menu/start_button.gd" id="1_6pedr"]
+[ext_resource type="Shader" uid="uid://cds3avfmjc2cj" path="res://Materials/blur.gdshader" id="1_s2c3o"]
+[ext_resource type="Script" uid="uid://dlcqtrsd60xs" path="res://Scripts/Menu/steel_amount.gd" id="2_syfuq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_syfuq"]
+shader = ExtResource("1_s2c3o")
+shader_parameter/lod = 0.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_beu5a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pedr"]
+bg_color = Color(0.576121, 0.627841, 0.762284, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jcrr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idohh"]
+bg_color = Color(0.466667, 0.466667, 0.466667, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfhf6"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syfuq"]
+bg_color = Color(0.94902, 0.133333, 0.133333, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2c3o"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ma218"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+shadow_color = Color(0, 0, 0, 0.818)
+shadow_offset = Vector2(2.5, 2.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_beu5a"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.740134, 0.788649, 1, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kf3n"]
+bg_color = Color(0.44607, 0.671498, 0.355604, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.741176, 0.788235, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6pedr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_syfuq")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="MainMenu" type="Panel" parent="."]
+modulate = Color(0.796243, 0.796243, 0.796243, 1)
+material = SubResource("CanvasItemMaterial_beu5a")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 533.0
+offset_top = 100.0
+offset_right = -567.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6pedr")
+
+[node name="StartSimulation" type="PanelContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.297
+anchor_top = 0.858
+anchor_right = 0.703
+anchor_bottom = 0.946
+offset_left = 0.209946
+offset_top = -0.0400391
+offset_right = -199.71
+offset_bottom = -46.48
+grow_horizontal = 2
+scale = Vector2(2.5, 2.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3jcrr")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/StartSimulation"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="StartButton" type="Button" parent="MainMenu/StartSimulation/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/hover = SubResource("StyleBoxFlat_idohh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wfhf6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_syfuq")
+text = "Start Simulation"
+
+[node name="Title" type="PanelContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -308.25
+offset_top = 30.0
+offset_right = -102.75
+offset_bottom = 23.0
+grow_horizontal = 2
+scale = Vector2(3, 3)
+theme_override_styles/panel = SubResource("StyleBoxFlat_s2c3o")
+
+[node name="Title" type="RichTextLabel" parent="MainMenu/Title"]
+custom_minimum_size = Vector2(205, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.512877, 0.517347, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.685)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ma218")
+bbcode_enabled = true
+text = "[wave amp=25 freq=4]Transportation Simulation"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 200.0
+offset_right = -100.0
+offset_bottom = -150.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 75
+
+[node name="Options" type="RichTextLabel" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(205, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/default_color = Color(0.512877, 0.517347, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.685)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ma218")
+bbcode_enabled = true
+text = "Options"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SteelAmount" type="HSlider" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/center_grabber = 1
+theme_override_constants/grabber_offset = 0
+theme_override_styles/slider = SubResource("StyleBoxFlat_beu5a")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_3kf3n")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_3kf3n")
+max_value = 10.0
+value = 1.0
+script = ExtResource("2_syfuq")
+
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer/SteelAmount"]
+layout_mode = 0
+offset_top = 22.0
+offset_right = 125.0
+offset_bottom = 45.0
+text = "Amount of Steel"
+
+[node name="PlaySpeed" type="HSlider" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/center_grabber = 1
+theme_override_constants/grabber_offset = 0
+theme_override_styles/slider = SubResource("StyleBoxFlat_beu5a")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_3kf3n")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_3kf3n")
+max_value = 2.0
+step = 0.25
+value = 1.0
+script = ExtResource("1_3kf3n")
+
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer/PlaySpeed"]
+layout_mode = 0
+offset_top = 22.0
+offset_right = 125.0
+offset_bottom = 45.0
+text = "PlaySpeed"
+
+[node name="Capacity" type="HSlider" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/center_grabber = 1
+theme_override_constants/grabber_offset = 0
+theme_override_styles/slider = SubResource("StyleBoxFlat_beu5a")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_3kf3n")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_3kf3n")
+max_value = 10.0
+value = 1.0
+script = ExtResource("1_3kf3n")
+
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer/Capacity"]
+layout_mode = 0
+offset_top = 22.0
+offset_right = 125.0
+offset_bottom = 45.0
+text = "Capacity"
+
+[connection signal="button_down" from="MainMenu/StartSimulation/MarginContainer/StartButton" to="." method="_on_start_button_button_down"]
+[connection signal="button_down" from="MainMenu/StartSimulation/MarginContainer/StartButton" to="MainMenu/StartSimulation/MarginContainer/StartButton" method="_on_button_down"]
+[connection signal="value_changed" from="MainMenu/VBoxContainer/SteelAmount" to="MainMenu/StartSimulation/MarginContainer/StartButton" method="_on_steel_amount_value_changed"]
+[connection signal="value_changed" from="MainMenu/VBoxContainer/SteelAmount" to="MainMenu/VBoxContainer/SteelAmount" method="_on_value_changed"]
+[connection signal="value_changed" from="MainMenu/VBoxContainer/PlaySpeed" to="MainMenu/VBoxContainer/PlaySpeed" method="_on_value_changed"]
+[connection signal="value_changed" from="MainMenu/VBoxContainer/Capacity" to="MainMenu/VBoxContainer/Capacity" method="_on_value_changed"]

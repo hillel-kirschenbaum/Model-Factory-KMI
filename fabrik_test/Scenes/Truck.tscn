@@ -1,78 +1,82 @@
-[gd_scene load_steps=8 format=3 uid="uid://bx80quqblm3w5"]
+[gd_scene load_steps=9 format=3 uid="uid://bx80quqblm3w5"]
 
 [ext_resource type="Script" uid="uid://cgpcigxk7tiqb" path="res://Scripts/MoveSteel/parenttrap.gd" id="1_30hf4"]
 [ext_resource type="Script" uid="uid://na58sa5ycdpd" path="res://Scripts/startTruck/truckcontroller.gd" id="1_f5rtt"]
+[ext_resource type="Script" uid="uid://y1f3aweerll6" path="res://Scripts/MoveSteel/steel_marker_pos.gd" id="3_4pjt2"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_84rxf"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_f5rtt"]
 size = Vector3(2.08398, 1, 1.02344)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30hf4"]
 albedo_color = Color(1, 0, 0, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_30hf4"]
+[sub_resource type="BoxMesh" id="BoxMesh_4pjt2"]
 material = SubResource("StandardMaterial3D_30hf4")
 size = Vector3(2, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5rtt"]
 albedo_color = Color(0.230315, 0.230315, 0.230315, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_f5rtt"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_dk048"]
 material = SubResource("StandardMaterial3D_f5rtt")
 
-[node name="Truck" type="Node3D"]
-
-[node name="Truck" type="VehicleBody3D" parent="."]
+[node name="Truck" type="VehicleBody3D"]
 steering = 0.478744
 script = ExtResource("1_f5rtt")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Truck"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.000457764)
-shape = SubResource("BoxShape3D_84rxf")
+shape = SubResource("BoxShape3D_f5rtt")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Truck"]
-mesh = SubResource("BoxMesh_30hf4")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4pjt2")
 skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="Truck"]
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_30hf4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Truck/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.000457764)
-shape = SubResource("BoxShape3D_84rxf")
+shape = SubResource("BoxShape3D_f5rtt")
 
-[node name="VehicleWheel3D" type="VehicleWheel3D" parent="Truck"]
+[node name="VehicleWheel3D" type="VehicleWheel3D" parent="."]
 transform = Transform3D(-3.49691e-08, 0, 0.8, 0, 1, 0, -0.8, 0, -3.49691e-08, -0.6, -0.3, 0.5)
 use_as_traction = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Truck/VehicleWheel3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleWheel3D"]
 transform = Transform3D(-4.37114e-08, -0.1, 0, 1, -4.37114e-09, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_f5rtt")
+mesh = SubResource("CylinderMesh_dk048")
 
-[node name="VehicleWheel3D2" type="VehicleWheel3D" parent="Truck"]
+[node name="VehicleWheel3D2" type="VehicleWheel3D" parent="."]
 transform = Transform3D(-3.49691e-08, 0, 0.8, 0, 1, 0, -0.8, 0, -3.49691e-08, 0.5, -0.3, 0.5)
 steering = 0.478744
 use_as_steering = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Truck/VehicleWheel3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleWheel3D2"]
 transform = Transform3D(-4.37114e-08, -0.1, 0, 1, -4.37114e-09, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_f5rtt")
+mesh = SubResource("CylinderMesh_dk048")
 
-[node name="VehicleWheel3D3" type="VehicleWheel3D" parent="Truck"]
+[node name="VehicleWheel3D3" type="VehicleWheel3D" parent="."]
 transform = Transform3D(-3.49691e-08, 0, 0.8, 0, 1, 0, -0.8, 0, -3.49691e-08, 0.6, -0.3, -0.491902)
 steering = 0.478744
 use_as_steering = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Truck/VehicleWheel3D3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleWheel3D3"]
 transform = Transform3D(-4.37114e-08, -0.1, 0, 1, -4.37114e-09, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_f5rtt")
+mesh = SubResource("CylinderMesh_dk048")
 
-[node name="VehicleWheel3D4" type="VehicleWheel3D" parent="Truck"]
+[node name="VehicleWheel3D4" type="VehicleWheel3D" parent="."]
 transform = Transform3D(-3.49691e-08, 0, 0.8, 0, 1, 0, -0.8, 0, -3.49691e-08, -0.6, -0.3, -0.5)
 use_as_traction = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Truck/VehicleWheel3D4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleWheel3D4"]
 transform = Transform3D(-4.37114e-08, -0.1, 0, 1, -4.37114e-09, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_f5rtt")
+mesh = SubResource("CylinderMesh_dk048")
 
-[connection signal="area_entered" from="Truck/Area3D" to="." method="_on_area_3d_area_entered"]
-[connection signal="area_entered" from="Truck/Area3D" to="Truck/Area3D" method="_on_area_entered"]
+[node name="SteelMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.850184, 0.878329, 0)
+script = ExtResource("3_4pjt2")
+
+[connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
